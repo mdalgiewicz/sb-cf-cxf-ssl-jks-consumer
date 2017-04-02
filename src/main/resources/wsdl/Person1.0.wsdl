@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="PersonRegistryService" xmlns:p="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:person="http://www.dalgim.com/namespace/personservice/"
+                  xmlns:general="http://www.dalgim.com/namespace/personservice/general"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+                  xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+                  targetNamespace="http://www.dalgim.com/namespace/personservice/"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+    <wsdl:types>
+        <p:schema xmlns="http://www.w3.org/2001/XMLSchema"
+                  targetNamespace="http://www.dalgim.com/namespace/personservice/"
+                  attributeFormDefault="qualified"
+                  elementFormDefault="qualified">
+            <p:include schemaLocation="Person1.0.xsd"/>
+        </p:schema>
+    </wsdl:types>
+
+    <wsdl:message name="GetPersonInfoIn">
+        <wsdl:part name="getPersonInfoRequest" element="general:GetPersonInfoRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetPersonInfoOut">
+        <wsdl:part name="getPersonInfoResponse" element="general:GetPersonInfoResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CreatePersonIn">
+        <wsdl:part name="createPersonRequest" element="general:CreatePersonRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreatePersonOut">
+        <wsdl:part name="createPersonResponse" element="general:CreatePersonResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetAllPersonInfoIn">
+        <wsdl:part name="getAllPersonInfoRequest" element="general:GetAllPersonInfoRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetAllPersonInfoOut">
+        <wsdl:part name="getAllPersonInfoResponse" element="general:GetAllPersonInfoResponse"/>
+    </wsdl:message>
+
+    <wsdl:portType name="PersonRegistry">
+        <wsdl:operation name="GetPersonInfo">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets information for Person by login</wsdl:documentation>
+            <wsdl:input message="person:GetPersonInfoIn"/>
+            <wsdl:output message="person:GetPersonInfoOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="CreatePerson">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Creates new Person</wsdl:documentation>
+            <wsdl:input message="person:CreatePersonIn"/>
+            <wsdl:output message="person:CreatePersonOut"/>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllPersonInfo">
+            <wsdl:documentation>Gets informations about all persons</wsdl:documentation>
+            <wsdl:input message="person:GetAllPersonInfoIn"/>
+            <wsdl:output message="person:GetAllPersonInfoOut"/>
+        </wsdl:operation>
+    </wsdl:portType>
+
+    <wsdl:binding name="PersonRegistryPortBinding" type="person:PersonRegistry">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="GetPersonInfo">
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreatePerson">
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetAllPersonInfo">
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+
+    <wsdl:service name="PersonRegistryService">
+        <wsdl:port name="PersonRegistryPort" binding="person:PersonRegistryPortBinding">
+            <soap:address location="http://localhost:8080/api/PersonService_1.0"/>
+        </wsdl:port>
+    </wsdl:service>
+
+</wsdl:definitions>
