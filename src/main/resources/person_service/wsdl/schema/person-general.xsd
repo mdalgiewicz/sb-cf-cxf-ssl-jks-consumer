@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<p:schema xmlns:p="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.dalgim.com/namespace/personservice/general"
+            xmlns:general="http://www.dalgim.com/namespace/personservice/general"
+            xmlns:datatypes="http://www.dalgim.com/namespace/personservice/datatypes"
+            targetNamespace="http://www.dalgim.com/namespace/personservice/general"
+            elementFormDefault="qualified"
+            version="1.0">
+
+    <p:import namespace="http://www.dalgim.com/namespace/personservice/datatypes"
+              schemaLocation="person-datatypes.xsd"/>
+
+    <p:element name="GetPersonInfoRequest">
+        <p:complexType>
+            <p:sequence>
+                <p:element nillable="false" minOccurs="1" maxOccurs="1" name="login" type="p:string"/>
+            </p:sequence>
+        </p:complexType>
+    </p:element>
+    <p:element name="GetPersonInfoResponse">
+        <p:complexType>
+            <p:sequence>
+                <p:element name="personInfo" type="datatypes:PersonInfo"/>
+            </p:sequence>
+        </p:complexType>
+    </p:element>
+
+    <p:element name="CreatePersonRequest">
+        <p:complexType>
+            <p:sequence>
+                <p:element name="login" type="p:string"/>
+                <p:element name="firstname" type="p:string"/>
+                <p:element name="lastname" type="p:string"/>
+                <p:element name="password" type="p:string"/>
+            </p:sequence>
+        </p:complexType>
+    </p:element>
+    <p:element name="CreatePersonResponse">
+        <p:complexType>
+            <p:sequence>
+                <p:element name="personInfo" type="datatypes:PersonInfo"/>
+            </p:sequence>
+        </p:complexType>
+    </p:element>
+    
+    <p:element name="GetAllPersonInfoRequest" type="Void"/>
+
+    <p:element name="GetAllPersonInfoResponse">
+        <p:complexType>
+            <p:sequence>
+                <p:element maxOccurs="unbounded" minOccurs="0" nillable="true" name="PersonInfoList" type="datatypes:PersonInfo"/>
+            </p:sequence>
+        </p:complexType>
+    </p:element>
+
+    <p:complexType name="Void">
+        <p:sequence>
+        </p:sequence>
+    </p:complexType>
+
+</p:schema>

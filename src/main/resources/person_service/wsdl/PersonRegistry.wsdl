@@ -15,7 +15,7 @@
                   targetNamespace="http://www.dalgim.com/namespace/personservice/"
                   attributeFormDefault="qualified"
                   elementFormDefault="qualified">
-            <p:include schemaLocation="Person1.0.xsd"/>
+            <p:include schemaLocation="PersonRegistry.xsd"/>
         </p:schema>
     </wsdl:types>
 
