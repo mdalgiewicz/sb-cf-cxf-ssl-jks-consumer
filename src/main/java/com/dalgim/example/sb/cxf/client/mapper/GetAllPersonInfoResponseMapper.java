@@ -5,7 +5,6 @@ import com.dalgim.namespace.personservice.datatypes.PersonInfo;
 import com.dalgim.namespace.personservice.general.GetAllPersonInfoResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,11 +22,8 @@ public class GetAllPersonInfoResponseMapper implements NoReverseObjectMapper<Get
         if (getAllPersonInfoResponse == null) {
             return null;
         }
-        List<PersonInfo> personInfoList = getAllPersonInfoResponse.getPersonInfoList();
-        if (personInfoList == null) {
-            return null;
-        }
-        return personInfoList.stream()
+        return getAllPersonInfoResponse.getPersonInfoList()
+                .stream()
                 .map(personMapper::reverseMap)
                 .collect(Collectors.toList());
     }

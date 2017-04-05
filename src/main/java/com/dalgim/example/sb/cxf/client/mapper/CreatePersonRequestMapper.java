@@ -15,8 +15,10 @@ public class CreatePersonRequestMapper implements NoReverseObjectMapper<Person, 
         if (person == null) {
             return null;
         }
+
         CreatePersonRequest createPersonRequest = new CreatePersonRequest();
         createPersonRequest.setFirstname(person.getFirstname());
+        createPersonRequest.setLastname(person.getLastname());
         createPersonRequest.setLogin(person.getUsername());
         createPersonRequest.setPassword(person.getPassword() != null ? String.valueOf(person.getPassword()) : null);
         return createPersonRequest;

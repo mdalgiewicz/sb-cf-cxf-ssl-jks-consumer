@@ -1,6 +1,7 @@
 package com.dalgim.example.sb.cxf.model;
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,6 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Builder
+@EqualsAndHashCode
 public class Person {
 
     private String username;
