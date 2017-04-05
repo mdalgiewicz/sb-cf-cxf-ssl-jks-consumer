@@ -1,4 +1,4 @@
-package com.dalgim.example.sb.cxf.mapper;
+package com.dalgim.example.sb.cxf.client.mapper;
 
 /**
  * Created by dalgim on 05.04.2017.
