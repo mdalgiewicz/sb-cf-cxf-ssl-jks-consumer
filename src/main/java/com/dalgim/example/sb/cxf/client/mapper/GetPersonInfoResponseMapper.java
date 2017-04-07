@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  */
 @Component
 @RequiredArgsConstructor
-public class GetPersonResponseMapper implements NoReverseObjectMapper<GetPersonInfoResponse, Person> {
+public class GetPersonInfoResponseMapper implements NoReverseObjectMapper<GetPersonInfoResponse, Person> {
 
     private final PersonMapper personMapper;
 

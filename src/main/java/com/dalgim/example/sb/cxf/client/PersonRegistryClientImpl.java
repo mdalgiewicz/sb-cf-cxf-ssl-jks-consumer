@@ -3,7 +3,7 @@ package com.dalgim.example.sb.cxf.client;
 import com.dalgim.example.sb.cxf.client.mapper.CreatePersonRequestMapper;
 import com.dalgim.example.sb.cxf.client.mapper.GetAllPersonInfoResponseMapper;
 import com.dalgim.example.sb.cxf.client.mapper.GetPersonInfoRequestMapper;
-import com.dalgim.example.sb.cxf.client.mapper.GetPersonResponseMapper;
+import com.dalgim.example.sb.cxf.client.mapper.GetPersonInfoResponseMapper;
 import com.dalgim.example.sb.cxf.model.Person;
 import com.dalgim.namespace.personservice.PersonRegistry;
 import com.dalgim.namespace.personservice.general.CreatePersonRequest;
@@ -25,7 +25,7 @@ public class PersonRegistryClientImpl implements PersonRegistryClient {
 
     private final PersonRegistry personRegistry;
     private final CreatePersonRequestMapper createPersonRequestMapper;
-    private final GetPersonResponseMapper getPersonResponseMapper;
+    private final GetPersonInfoResponseMapper getPersonInfoResponseMapper;
     private final GetPersonInfoRequestMapper getPersonInfoRequestMapper;
     private final GetAllPersonInfoResponseMapper getAllPersonInfoResponseMapper;
 
@@ -43,7 +43,7 @@ public class PersonRegistryClientImpl implements PersonRegistryClient {
 
         GetPersonInfoRequest getPersonInfoRequest = getPersonInfoRequestMapper.map(username);
         GetPersonInfoResponse getPersonInfoResponse = personRegistry.getPersonInfo(getPersonInfoRequest);
-        return getPersonResponseMapper.map(getPersonInfoResponse);
+        return getPersonInfoResponseMapper.map(getPersonInfoResponse);
     }
 
     @Override
