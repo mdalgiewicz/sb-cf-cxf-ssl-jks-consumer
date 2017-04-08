@@ -1,4 +1,4 @@
 personService:
-  address: http://localhost:8080/api/PersonSoapService_1.0
+  address: https://localhost:8443/api/PersonSoapService_1.0
 server:
   port: 8081

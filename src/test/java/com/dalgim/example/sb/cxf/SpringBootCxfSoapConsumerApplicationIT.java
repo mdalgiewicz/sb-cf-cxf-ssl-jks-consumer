@@ -11,7 +11,7 @@ public class SpringBootCxfSoapConsumerApplicationIT {
 
 	@Test
 	public void contextLoads() {
-		assert true;
+        assert true;
 	}
 
 }
