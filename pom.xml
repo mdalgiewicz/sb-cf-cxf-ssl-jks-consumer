@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.dalgim.example.sb.cxf</groupId>
-	<artifactId>sb-cf-cxf-ws-consumer</artifactId>
+	<artifactId>sb-cf-cxf-ws-ssl-jks-consumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>Spring Boot :: Cxf Soap Consumer</name>
-	<description>Spring Boot Cxf Soap Contract First Consumer</description>
+	<description>Spring Boot Cxf Soap Contract First Consumer, SSL JKS</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>

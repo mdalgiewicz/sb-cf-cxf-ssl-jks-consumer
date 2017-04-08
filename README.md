@@ -1,6 +1,8 @@
-# sb-cf-cxf-ws-consumer
-Spring Boot Cxf Contract First Soap Consumer
-
+**Spring Boot Contract First CXF Soap Consumer**
+-Spring Boot
+-Cxf, Contract First Soap Consumer
+-SSL (JKS)
+-Lombok
 
 Generowanie keystore dla klienta usługi
 keytool -genkeypair -alias consumerkey -keyalg RSA -dname "CN=localhost,OU=Example Org Unit,O=Dalgim,L=Warsaw,S=Warsaw,C=PL" -keypass P@ssw0rd -keystore consumer-keystore.jks -storepass P@SSWORD
