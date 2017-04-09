@@ -16,6 +16,7 @@ import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.TrustManagerFactory;
+import javax.net.ssl.X509TrustManager;
 import java.io.IOException;
 import java.security.KeyManagementException;
 import java.security.KeyStore;
@@ -24,6 +25,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.security.UnrecoverableKeyException;
 import java.security.cert.CertificateException;
+import java.security.cert.X509Certificate;
 
 /**
  * Created by dalgim on 02.04.2017.
@@ -31,9 +33,9 @@ import java.security.cert.CertificateException;
 @Configuration
 public class WebServiceConfig {
 
-    @Value(value = "classpath:ssl/client.jks") //or classpath:ssl-div/client-keystore.jks
+    @Value(value = "classpath:pkcs12/client-keystore.p12") //or classpath:ssl-div/client-keystore.jks
     private Resource keystoreResource;
-    @Value(value = "classpath:ssl/client.jks") //or classpath:ssl-div/client-truststore.jks
+    @Value(value = "classpath:ssl-div/client-truststore.jks") //or classpath:ssl-div/client-truststore.jks
     private Resource truststoreResource;
     private static final String KEYSTORE_TYPE = "JKS";
     private static final String TRUSTSTORE_TYPE = "JKS";
@@ -66,8 +68,8 @@ public class WebServiceConfig {
         try {
             SSLContext sslContext = SSLContext.getInstance(SSL_PROTOCOL);
             KeyManager[] keyManagers = keyManagerFactory().getKeyManagers();
-            TrustManager[] trustManagers = trustManagerFactory().getTrustManagers();
-            sslContext.init(keyManagers, trustManagers, new SecureRandom());
+            //TrustManager[] trustManagers = trustManagerFactory().getTrustManagers();
+            sslContext.init(keyManagers, createTrustAllManagers(), new SecureRandom());
             return sslContext;
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("Error while getting instance of SSLContext: " + e);
@@ -80,7 +82,7 @@ public class WebServiceConfig {
         String defaultAlgorithm = KeyManagerFactory.getDefaultAlgorithm();
         try {
             KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(defaultAlgorithm);
-            KeyStore keyStore = KeyStore.getInstance(KEYSTORE_TYPE);
+            KeyStore keyStore = KeyStore.getInstance("PKCS12");
             keyStore.load(keystoreResource.getInputStream(), KEYSTORE_PASSWORD);
             keyManagerFactory.init(keyStore, KMF_PASSWORD);
             return keyManagerFactory;
@@ -110,6 +112,17 @@ public class WebServiceConfig {
         } catch (CertificateException | IOException e) {
             throw new RuntimeException("Error while loading TrustStore: " + e);
         }
+    }
+
+    TrustManager[] createTrustAllManagers() {
+        return new TrustManager[] {
+                new X509TrustManager() {
+                    public X509Certificate[] getAcceptedIssuers() {
+                        return new X509Certificate[0];
+                    }
+                    public void checkClientTrusted(X509Certificate[] certs, String authType) {}
+                    public void checkServerTrusted(X509Certificate[] certs, String authType) {}
+                }};
     }
 
 }

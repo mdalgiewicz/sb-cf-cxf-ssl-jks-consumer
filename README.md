@@ -33,3 +33,8 @@ keytool -importcert -keystore client-truststore.jks -alias servercert -file serv
 keytool -importcert -keystore server-truststore.jks -alias clientcert -file client-public.cer -storepass password -noprompt
 
 
+## Użycie certyfikatu w formacie PKCS12 - Najpier należy utworzyc certyfikat bazowy z którego wygenerujemy testowy format pkcs12 
+## Utworzenie keystore w formacie p12 z istniejacego keystore
+keytool -importkeystore -srckeystore client-keystore.jks -srcstoretype JKS -deststoretype PKCS12 -destkeystore client-keystore.p12
+## Wyeksportowanie nowego certyfikatu w celu dodania go do trustore po stronie serwera
+keytool -exportcert -keystore client-keystore.p12 -storetype PKCS12 -storepass password -alias clientkey -file client-cert.crt
