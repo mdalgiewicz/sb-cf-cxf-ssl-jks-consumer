@@ -33,7 +33,7 @@ import java.security.cert.X509Certificate;
 @Configuration
 public class WebServiceConfig {
 
-    @Value(value = "classpath:pkcs12/client-keystore.p12") //or classpath:ssl-div/client-keystore.jks
+    @Value(value = "classpath:ssl-div/client-keystore.jks") //or classpath:ssl-div/client-keystore.jks or classpath:pkcs12/client-keystore.p12
     private Resource keystoreResource;
     @Value(value = "classpath:ssl-div/client-truststore.jks") //or classpath:ssl-div/client-truststore.jks
     private Resource truststoreResource;
@@ -68,8 +68,8 @@ public class WebServiceConfig {
         try {
             SSLContext sslContext = SSLContext.getInstance(SSL_PROTOCOL);
             KeyManager[] keyManagers = keyManagerFactory().getKeyManagers();
-            //TrustManager[] trustManagers = trustManagerFactory().getTrustManagers();
-            sslContext.init(keyManagers, createTrustAllManagers(), new SecureRandom());
+            TrustManager[] trustManagers = trustManagerFactory().getTrustManagers();
+            sslContext.init(keyManagers, trustManagers, new SecureRandom());
             return sslContext;
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException("Error while getting instance of SSLContext: " + e);
@@ -82,7 +82,7 @@ public class WebServiceConfig {
         String defaultAlgorithm = KeyManagerFactory.getDefaultAlgorithm();
         try {
             KeyManagerFactory keyManagerFactory = KeyManagerFactory.getInstance(defaultAlgorithm);
-            KeyStore keyStore = KeyStore.getInstance("PKCS12");
+            KeyStore keyStore = KeyStore.getInstance(KEYSTORE_TYPE);
             keyStore.load(keystoreResource.getInputStream(), KEYSTORE_PASSWORD);
             keyManagerFactory.init(keyStore, KMF_PASSWORD);
             return keyManagerFactory;
