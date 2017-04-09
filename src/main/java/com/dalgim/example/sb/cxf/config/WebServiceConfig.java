@@ -31,16 +31,16 @@ import java.security.cert.CertificateException;
 @Configuration
 public class WebServiceConfig {
 
-    @Value(value = "classpath:ssl/consumer-keystore.jks")
+    @Value(value = "classpath:ssl/client.jks") //or classpath:ssl-div/client-keystore.jks
     private Resource keystoreResource;
-    @Value(value = "classpath:ssl/consumer-truststore.jks")
+    @Value(value = "classpath:ssl/client.jks") //or classpath:ssl-div/client-truststore.jks
     private Resource truststoreResource;
     private static final String KEYSTORE_TYPE = "JKS";
     private static final String TRUSTSTORE_TYPE = "JKS";
     //On production environment passwords should be encrypted
-    private static final char[] KEYSTORE_PASSWORD = new char[] {'P', '@', 'S', 'S', 'W', 'O', 'R', 'D'};
-    private static final char[] TRUSTSTORE_PASSWORD = new char[] {'P', '@', 's', 's', 'w', '0', 'r', 'd'};
-    private static final char[] KMF_PASSWORD =  new char[] {'P', '@', 's', 's', 'w', '0', 'r', 'd'};
+    private static final char[] KEYSTORE_PASSWORD = new char[] {'p', 'a', 's', 's', 'w', 'o', 'r', 'd'};
+    private static final char[] TRUSTSTORE_PASSWORD = new char[] {'p', 'a', 's', 's', 'w', 'o', 'r', 'd'};
+    private static final char[] KMF_PASSWORD =  new char[] {'p', 'a', 's', 's', 'w', 'o', 'r', 'd'};
     private static final String SSL_PROTOCOL = "TLS";
 
     @Bean
