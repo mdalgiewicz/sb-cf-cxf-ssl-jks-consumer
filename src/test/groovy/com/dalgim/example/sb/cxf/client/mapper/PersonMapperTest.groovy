@@ -5,7 +5,7 @@ import com.dalgim.namespace.personservice.datatypes.PersonInfo
 import spock.lang.Specification
 
 /**
- * Created by dalgim on 05.04.2017.
+ * Created by Mateusz Dalgiewicz on 05.04.2017.
  */
 class PersonMapperTest extends Specification {
 

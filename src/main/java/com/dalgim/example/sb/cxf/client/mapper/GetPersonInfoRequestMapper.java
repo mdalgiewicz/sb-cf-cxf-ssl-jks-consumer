@@ -4,7 +4,7 @@ import com.dalgim.namespace.personservice.general.GetPersonInfoRequest;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by dalgim on 05.04.2017.
+ * Created by Mateusz Dalgiewicz on 05.04.2017.
  */
 @Component
 public class GetPersonInfoRequestMapper implements NoReverseObjectMapper<String, GetPersonInfoRequest> {

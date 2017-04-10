@@ -1,12 +1,10 @@
 package com.dalgim.example.sb.cxf.client.mapper
 
 import com.dalgim.example.sb.cxf.model.Person
-import com.dalgim.namespace.personservice.datatypes.PersonInfo
-import com.dalgim.namespace.personservice.general.CreatePersonRequest
 import spock.lang.Specification
 
 /**
- * Created by dalgim on 05.04.2017.
+ * Created by Mateusz Dalgiewicz on 05.04.2017.
  */
 class CreatePersonRequestMapperTest extends Specification {
 

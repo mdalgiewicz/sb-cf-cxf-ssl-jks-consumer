@@ -5,7 +5,7 @@ import com.dalgim.namespace.personservice.general.GetPersonInfoResponse
 import spock.lang.Specification
 
 /**
- * Created by dalgim on 07.04.2017.
+ * Created by Mateusz Dalgiewicz on 07.04.2017.
  */
 class GetPersonResponseMapperTest extends Specification {
 

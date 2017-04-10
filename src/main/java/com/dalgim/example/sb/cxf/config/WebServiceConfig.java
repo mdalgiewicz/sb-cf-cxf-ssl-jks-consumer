@@ -28,7 +28,7 @@ import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 
 /**
- * Created by dalgim on 02.04.2017.
+ * Created by Mateusz Dalgiewicz on 02.04.2017.
  */
 @Configuration
 public class WebServiceConfig {

@@ -17,7 +17,7 @@ import java.util.Collection;
 import com.google.common.base.Preconditions;
 
 /**
- * Created by dalgim on 05.04.2017.
+ * Created by Mateusz Dalgiewicz on 05.04.2017.
  */
 @Service
 @RequiredArgsConstructor

@@ -3,7 +3,7 @@ package com.dalgim.example.sb.cxf.client.mapper
 import spock.lang.Specification
 
 /**
- * Created by dalgim on 07.04.2017.
+ * Created by Mateusz Dalgiewicz on 07.04.2017.
  */
 class GetPersonInfoRequestMapperTest extends Specification {
 
