@@ -1,4 +1,43 @@
-personService:
-  address: https://localhost:8443/api/PersonSoapService_1.0
 server:
   port: 8081
+client:
+  producer-address: https://localhost:8443/api/PersonSoapService_1.0
+---
+spring:
+  profiles: div-keystore
+client:
+  ssl:
+    keystore: /ssl-div/client-keystore.jks
+    keystore-pass: password
+    keystore-key-pass: password
+    keystore-type: JKS
+    truststore: /ssl-div/client-truststore.jks
+    truststore-pass: password
+    truststore-type: JKS
+    trust-all: false
+---
+spring:
+  profiles: one-keystore
+client:
+  ssl:
+    keystore: /ssl/client.jks
+    keystore-pass: password
+    keystore-key-pass: password
+    keystore-type: JKS
+    truststore: /ssl/client.jks
+    truststore-pass: password
+    truststore-type: JKS
+    trust-all: false
+---
+spring:
+  profiles: pkcs12
+client:
+  ssl:
+    keystore: /pkcs12/client-keystore.p12
+    keystore-pass: password
+    keystore-key-pass: password
+    keystore-type: PKCS12
+    truststore: /ssl-div/client-truststore.jks
+    truststore-pass: password
+    truststore-type: JKS
+    trust-all: false
