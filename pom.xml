@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.dalgim.example.sb.cxf</groupId>
-	<artifactId>sb-cf-cxf-ws-ssl-jks-consumer</artifactId>
+	<artifactId>sb-cf-cxf-ssl-jks-consumer</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
